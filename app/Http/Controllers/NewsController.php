@@ -102,6 +102,7 @@ class NewsController extends Controller
             $news = News::find($id);
             if( !$news ) return $this->error('News not found', 500);
 
+            if( $news->details ) $news->details->each->delete();
             $news->delete();
 
             return $this->success('Success destroy news', null, 200);
