@@ -23,9 +23,7 @@ class UserController extends Controller
             );
 
             $validator = Validator::make( $request->all(), $rules );
-            if ( $validator->fails() ){
-                return $this->error($validator->errors(), 500);
-            }
+            if( $validator->fails() ) return $this->error($validator->errors(), 500);
 
             $user = User::create([
                 'name' => $request->name,
@@ -34,7 +32,7 @@ class UserController extends Controller
             ]);
 
             return $this->success('success create user', New UserResource($user), 200);
-            
+
         } catch (\Exception $err) {
             return $this->error($err->getMessage(), 500);
 
@@ -45,7 +43,6 @@ class UserController extends Controller
     {
         try {
             if( !Auth::attempt($request->only('username', 'password')) ){
-                // return response()->json(['message' => 'username atau password yang anda masukkan salah'], 500);
                 return $this->error('username atau password yang anda masukkan salah', 500);
             }
 
@@ -61,7 +58,7 @@ class UserController extends Controller
             return $this->success('success login '.$user->name, $data, 200);
 
         } catch (\Throwable $th) {
-            //throw $th;
+            return $this->error( $th->getMessage(), 500 );
         }
     }
 }
