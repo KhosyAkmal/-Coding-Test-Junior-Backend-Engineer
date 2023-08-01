@@ -30,13 +30,13 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('news', [NewsController::class, 'store']);
     Route::put('news', [NewsController::class, 'update']);
-    Route::delete('news', [NewsController::class, 'destroy']);
+    Route::delete('news/{id}', [NewsController::class, 'destroy']);
 
     Route::put('custom-pages', [CustomPageController::class, 'update']);
     Route::resource('custom-pages', CustomPageController::class);
 
     Route::put('news-category', [NewsCategoryController::class, 'update']);
     Route::resource('news-category', NewsCategoryController::class);
-    
+
 });
 
