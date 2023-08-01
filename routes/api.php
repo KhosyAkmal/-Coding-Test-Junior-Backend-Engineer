@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\NewsCategory;
+use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'register']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::put('news-category', [NewsCategoryController::class, 'update']);
+Route::resource('news-category', NewsCategoryController::class);
+
