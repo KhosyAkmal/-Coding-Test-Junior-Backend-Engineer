@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class NewsController extends Controller
 {
     use ResponseAPI;
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         try {
@@ -26,9 +24,6 @@ class NewsController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         try {
@@ -57,9 +52,6 @@ class NewsController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         try {
@@ -102,10 +94,7 @@ class NewsController extends Controller
             return $this->error($th->getMessage(), 500);
         }
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy($id)
     {
         try {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\NewsCategory;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\NewsController;
@@ -28,5 +29,8 @@ Route::resource('news-category', NewsCategoryController::class);
 Route::middleware('auth:sanctum')->group(function () {
     Route::put('news', [NewsController::class, 'update']);
     Route::resource('news', NewsController::class);
+
+    Route::put('custom-pages', [CustomPageController::class, 'update']);
+    Route::resource('custom-pages', CustomPageController::class);
 });
 
