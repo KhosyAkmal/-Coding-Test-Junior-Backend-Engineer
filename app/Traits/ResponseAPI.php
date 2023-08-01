@@ -28,7 +28,7 @@ trait ResponseAPI
         } else {
             return response()->json([
                 'message' => $message,
-                'status' => 'error',
+                'status' => 'fail',
                 'code' => $statusCode,
             ], $statusCode);
         }
