@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\ResponseAPI;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class UserController extends Controller
 {
     use ResponseAPI;
 
-    public function registerUser(Request $request){
+    public function register(Request $request){
         try {
             $rules = array(
                 'name'      => 'required',
@@ -23,29 +24,20 @@ class UserController extends Controller
 
             $validator = Validator::make( $request->all(), $rules );
             if ( $validator->fails() ){
-                return response()->json([
-                    'status' => 500,
-                    'message' => $validator->errors()
-                ],500 );
+                return $this->error($validator->errors(), 500);
             }
 
             $user = User::create([
                 'name' => $request->name,
-                'email' => $request->email,
+                'username' => $request->username,
                 'password' => Hash::make($request->password)
             ]);
 
-            // return response()->json([
-            //     'data' => New UserResource($user),
-            //     'status' => 200,
-            //     'message' => 'Success register user',
-            // ], 200);
-
+            return $this->success('success create user', New UserResource($user), 200);
+            
         } catch (\Exception $err) {
-            return response()->json([
-                'status' => 500,
-                'message' => 'EXCEPTION : '. $err->getMessage()
-            ], 500);
+            return $this->error($err->getMessage(), 500);
+
         }
     }
 
