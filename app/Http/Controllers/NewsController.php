@@ -126,7 +126,7 @@ class NewsController extends Controller
 
             if( !$news ) return $this->error('News not found', 500);
 
-            $comment = $news->comments()->create([
+            $comment = $news->details()->create([
                 'name' => $request->name ,
                 'comment' => $request->comment,
             ]);
