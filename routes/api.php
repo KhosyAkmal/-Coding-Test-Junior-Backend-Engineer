@@ -22,16 +22,21 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'register']);
 
-Route::put('news-category', [NewsCategoryController::class, 'update']);
-Route::resource('news-category', NewsCategoryController::class);
-
+Route::get('news', [NewsController::class, 'index']);
+Route::get('news/{id}', [NewsController::class, 'show']);
 Route::post('news/comment/{id}', [NewsController::class, 'storeComment']);
 
 Route::middleware('auth:sanctum')->group(function () {
+
+    Route::post('news', [NewsController::class, 'store']);
     Route::put('news', [NewsController::class, 'update']);
-    Route::resource('news', NewsController::class);
+    Route::delete('news', [NewsController::class, 'destroy']);
 
     Route::put('custom-pages', [CustomPageController::class, 'update']);
     Route::resource('custom-pages', CustomPageController::class);
+
+    Route::put('news-category', [NewsCategoryController::class, 'update']);
+    Route::resource('news-category', NewsCategoryController::class);
+    
 });
 
