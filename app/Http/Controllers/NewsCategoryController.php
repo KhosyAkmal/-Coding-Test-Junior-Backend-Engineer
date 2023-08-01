@@ -87,7 +87,9 @@ class NewsCategoryController extends Controller
             $newsCategory = NewsCategory::find($id);
             if( !$newsCategory ) return $this->error('News category not found', 500);
 
+            $newsCategory->news->each->delete();
             $newsCategory->delete();
+
             return $this->success('Success destroy news category', null, 200);
 
         } catch (\Throwable $th) {
