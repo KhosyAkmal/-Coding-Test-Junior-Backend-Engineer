@@ -1,0 +1,380 @@
+{
+	"info": {
+		"_postman_id": "5c6cd914-c287-46ee-b1f2-972dbbae05a0",
+		"name": "CMS TEST PT. ICD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17760829"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"markiee\",\r\n    \"password\" : \"123321123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"marki\",\r\n    \"username\" : \"markiee\",\r\n    \"password\" : \"123321123\",\r\n    \"password_confirmation\" : \"123321123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News Category",
+			"item": [
+				{
+					"name": "List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "{{url}}/news-category"
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/news-category/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Olahraga\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/news-category"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 2,\r\n    \"name\" : \"lhaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/news-category"
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url}}/news-category/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/news"
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/news/1"
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\" : \"Arsenal bantai Barcelone dengan skor 5-3\",\r\n    \"news_category_id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/news"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 2,\r\n    \"content\" : \"Arsenal bantai barcelona dengan skor 5-3 di USA\",\r\n    \"news_category_id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/news"
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url}}/news/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\" : \"Good banget sih arsenal\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/news/comment/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Custom Pages",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/custom-pages"
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/custom-pages/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"custom_url\" : \"google.com\",\r\n    \"page_content\" : \"ini masuk ke page content\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/custom-pages"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 1,\r\n    \"custom_url\" : \"google.com\",\r\n    \"page_content\" : \"ini masuk ke page content yoi bro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/custom-pages"
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|66jmrM2Gwfwizc4FmxEOp8oBig6Z7tSsY3CYxX79"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url}}/custom-pages/1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
