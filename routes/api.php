@@ -25,6 +25,7 @@ Route::post('register', [UserController::class, 'register']);
 Route::put('news-category', [NewsCategoryController::class, 'update']);
 Route::resource('news-category', NewsCategoryController::class);
 
+Route::post('news/comment/{id}', [NewsController::class, 'storeComment']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::put('news', [NewsController::class, 'update']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\NewsDetailResource;
 use App\Http\Resources\NewsResource;
 use App\Models\News;
 use App\Models\NewsCategory;
@@ -94,7 +95,7 @@ class NewsController extends Controller
             return $this->error($th->getMessage(), 500);
         }
     }
-    
+
     public function destroy($id)
     {
         try {
@@ -104,6 +105,33 @@ class NewsController extends Controller
             $news->delete();
 
             return $this->success('Success destroy news', null, 200);
+
+        } catch (\Throwable $th) {
+            return $this->error($th->getMessage(), 500);
+        }
+    }
+
+    public function storeComment(Request $request, $id)
+    {
+        try {
+
+            $news = News::find($id);
+
+            $rules = [
+                'comment' => 'required',
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+            if( $validator->fails() ) return $this->error($validator->errors(), 500);
+
+            if( !$news ) return $this->error('News not found', 500);
+
+            $comment = $news->comments()->create([
+                'name' => $request->name ,
+                'comment' => $request->comment,
+            ]);
+
+            return $this->success("Success store comment", New NewsDetailResource($comment) );
 
         } catch (\Throwable $th) {
             return $this->error($th->getMessage(), 500);
